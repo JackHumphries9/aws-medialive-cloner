@@ -6,13 +6,14 @@ const program = new Command();
 //Grabs version and description from package.json
 program.version(PKG_VERSION).description(PKG_DESCRIPTION);
 
-program
-	.command("hello")
-	.argument("[name]", "Your name")
-	.action((name) => {
-		if (!name) name = "World";
-		console.log(`Hello ${name}!`);
-		process.exit(0);
-	});
+program.command("dump").action(() => {
+	console.log("Dumping...")
+	process.exit(0)
+})
+
+program.command("provision").action(() => {
+	console.log("Provisioning...")
+	process.exit(0)
+})
 
 program.parse(process.argv);
