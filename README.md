@@ -1,14 +1,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/JackHumphries9/typescript-cli-template">
-    <img src="./ts-cli-temp-icon.png" alt="Logo" width="80" height="80">
-  </a>
 
-  <h3 align="center">Typescript CLI Template</h3>
+  <h3 align="center">AWS MediaLive Cloner</h3>
 
   <p align="center">
-    A template for creating CLIs with Typescript, Chalk and Commander
+    Clone MediaLive channels and inputs from one place to another
   </p>
 </p>
 
@@ -19,25 +16,21 @@
 -   [About the Project](#about-the-project)
 -   [Built With](#built-with)
 -   [Getting Started](#getting-started)
--   [Common Problems](#common-problems)
--   [Roadmap](#roadmap)
 -   [Contributing](#contributing)
 -   [License](#license)
--   [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-This is a template for creating CLIs with Typescript, Chalk and Commander. It allows you to quickly create a CLI without having to worry about the setup.
-
-(Icon by [Smashicons]("https://www.flaticon.com/free-icons/command-line"))
+We needed a simple way to copy and paste MediaLive setups between AWS accounts so created a tool to easily do this.
 
 ### Built With
 
 -   [Commander.js](https://github.com/tj/commander.js)
 -   [Chalk](https://github.com/chalk/chalk)
 -   [Typescript](https://github.com/microsoft/TypeScript)
+-   [AWS SDK](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html)
 
 <!-- GETTING STARTED -->
 
@@ -48,7 +41,7 @@ To get a local copy up and running follow these simple steps.
 Clone the repo (or you can click the "Use this template" button to create a new repo from this template):
 
 ```sh
-git clone https://github.com/JackHumphries9/typescript-cli-template.git
+git clone https://github.com/TheWFA/aws-medialive-cloner.git
 ```
 
 Install NPM packages:
@@ -57,53 +50,36 @@ Install NPM packages:
 npm i
 ```
 
-Run the example command:
+Build the project:
 
 ```sh
-npm run build && node ./dist/index.js hello
+npm run build
 ```
 
-You should change the name, the name of the binary, version and description of the project in the `package.json` file as well as add your name to the author field.
+Add your AWS credentials to the `config.json` file:
 
-If you want to build your command so you can test it anywhere, run:
+```json
+{
+	"identities": {
+		"<name>": {
+			"accessKey": "<accessKey>",
+			"secretAccessKey": "<secretAccessKey>"
+		}
+	}
+}
+```
+
+Dump the MediaLive channel and input configurations to a file:
 
 ```sh
-npm run build && npm i -g
+node dist/index.js dump
 ```
 
-Then you can run your command anywhere:
+Provision the MediaLive channel and input configurations from a file:
 
 ```sh
-$ my_command
-
-Your command is working!
+node dist/index.js provision
 ```
-
-## Common Problems
-
-Heres a list of common problems you may encounter when using this template.
-
-### Importing files
-
-If your trying to import another file in the `src` directory, you may get an error like this:
-
-```sh
-Error: Cannot find module '/x/y/z/typescript-cli-template/dist/your_file.ts' imported from /x/y/z/typescript-cli-templatee/dist/index.js
-```
-
-This is because the `tsconfig.json` file is set to use the latest version of ES. You have to import your file with the `.js` extension:
-
-```ts
-import { YourFuncs } from "./your_file.js";
-```
-
-### Publishing to NPM
-
-If the command your trying to publish already exists on npmjs, you will get an error which states it is the same or similar to an existing package. To fix this, you need to change the name of the binary in the `package.json` file. Either use a more abstract name or add a prefix to the name (i.e. `@your-npm-username/your_command`). You will also need to change the name of the package in the `package.json` file.
-
-## Roadmap
-
-See the [open issues](https://github.com/JackHumphries9/jwter/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -119,10 +95,8 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
-Distributed under the GNU General Public License v3.0 License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## Contact
+```
 
-Jack Humphries - me@jackhumphries.io
-
-Project Link: [https://github.com/JackHumphries9/typescript-cli-template](https://github.com/JackHumphries9/typescript-cli-template)
+```
