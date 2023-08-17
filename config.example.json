@@ -1,0 +1,8 @@
+{
+	"identities": {
+		"default": {
+			"accessKey": "<accessKey>",
+			"secretAccessKey": "<secretAccessKey>"
+		}
+	}
+}
