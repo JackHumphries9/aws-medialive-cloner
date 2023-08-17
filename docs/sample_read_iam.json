@@ -1,0 +1,20 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"medialive:DescribeInput",
+				"medialive:ListInputs",
+				"medialive:DescribeAccountConfiguration",
+				"medialive:ListInputDevices",
+				"medialive:DescribeInputSecurityGroup",
+				"medialive:ListInputSecurityGroups",
+				"medialive:ListChannels",
+				"medialive:DescribeChannel",
+				"medialive:DescribeInputDevice"
+			],
+			"Resource": "*"
+		}
+	]
+}
